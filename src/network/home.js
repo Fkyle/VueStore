@@ -4,7 +4,7 @@ export function getHomeMultidata(){
     url:'/home/multidata'
   })
 }
-// type，page参数是url地址中？后面紧接的参数
+// type&page参数是url地址中？后面紧接的参数
 export function getHomeMultiGoods(type,page){
   return request({
     url:'/home/data',

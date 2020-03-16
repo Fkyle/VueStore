@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <!-- 把Detail排除在外，让他每次进入都能进行生命周期函数create\destroy... -->
+    <keep-alive exclude="Detail">
     <router-view/>
     </keep-alive>
     <MainTabBar/>
