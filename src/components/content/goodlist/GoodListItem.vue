@@ -1,0 +1,79 @@
+<template>
+  <div class="good-list-item">
+    <img :src="goodItem.show.img" alt="" @load="imgLoad" @click='goToDetail'>
+    <div class="good-info">
+      <p>{{goodItem.title}}</p>
+      <span class="price">{{goodItem.price}}</span>
+      <span class="collect">{{goodItem.cfav}}</span>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name:"GoodListItem",
+  props:{
+    goodItem:{
+      type:Object,
+      default(){
+        return {}
+      }
+    }
+  },
+  methods:{
+    imgLoad(){
+      // console.log('监听每一张图片的加载进度');
+      //使用事件总线的方式与Home.vue进行联系
+      this.$bus.$emit('imgItemLoad')
+    },
+    goToDetail(){
+      console.log('goToDetail');
+      let iid = this.goodItem.iid;
+      this.$router.push({path:'/detail',query:{iid}})
+    }
+  }
+}
+</script>
+
+<style scoped>
+.good-list-item{
+  padding-bottom: 40px;
+  position: relative;
+  width: 48%;
+}
+.good-list-item img{
+  width:100%;
+  border-radius: 5px;
+}
+.good-info{
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  text-align: center;
+}
+.good-info p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 3px;
+}
+.good-info .price{
+  color:var(--color-high-text);
+  margin-right: 20px;
+}
+.good-info .collect{
+  position: relative;
+}
+.good-info .collect::before{
+  content:'';
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  width: 14px;
+  height: 14px;
+  background: url("~assets/img/common/collect.svg") 0 0/14px 14px;
+}
+</style>
