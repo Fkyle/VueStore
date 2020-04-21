@@ -1,9 +1,9 @@
 <template>
-  <div class="good-list-item">
-    <img :src="goodItem.show.img" alt="" @load="imgLoad" @click='goToDetail'>
+  <div class="good-list-item" @click='goToDetail'>
+    <img v-lazy='getImg' :key="getImg">
     <div class="good-info">
       <p>{{goodItem.title}}</p>
-      <span class="price">{{goodItem.price}}</span>
+      <span class="price">￥{{goodItem.price}}</span>
       <span class="collect">{{goodItem.cfav}}</span>
     </div>
   </div>
@@ -27,9 +27,14 @@ export default {
       this.$bus.$emit('imgItemLoad')
     },
     goToDetail(){
-      console.log('goToDetail');
+      // console.log('goToDetail');
       let iid = this.goodItem.iid;
       this.$router.push({path:'/detail',query:{iid}})
+    }
+  },
+  computed:{
+    getImg(){
+      return this.goodItem.image || this.goodItem.show.img || this.goodItem.img
     }
   }
 }

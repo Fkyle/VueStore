@@ -43,7 +43,7 @@ export default {
     // 监听滚动
     this.BTscroll.on('scroll',(position)=>{
       // console.log(position);
-      // 把position掉出去给有需要的人用
+      // 把position调出去给有需要的人用
       this.$emit('scrollPosition',position)
     })
     // 上拉加载更多
@@ -61,7 +61,7 @@ export default {
       this.BTscroll && this.BTscroll.finishPullUp && this.BTscroll.finishPullUp()
     },
     refresh(){
-      console.log('优化后的加载情况');
+      // console.log('优化后的加载情况');
       this.BTscroll && this.BTscroll.refresh && this.BTscroll.refresh()
     },
     getScrollY(){

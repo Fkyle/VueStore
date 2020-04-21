@@ -14,7 +14,7 @@
     </div>
     <div class="info-service">
       <span class="info-service-item" v-for = "index in goods.services.length-1" :key='index'>
-        <img :src="goods.services[index-1].icon" alt="">
+        <img alt="" v-lazy="goods.services[index-1].icon">
         <span>{{goods.services[index-1].name}}</span>
       </span>
     </div>
@@ -92,7 +92,7 @@ export default {
   top: 2px;
 }
 .info-service-item span{
-  font-size: 14px;
+  font-size: 12px;
   color: #333;
 }
 

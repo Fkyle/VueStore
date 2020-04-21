@@ -54,7 +54,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   //从from跳转到to
   // console.log(to);
-  document.title = to.matched[0].meta.title
+  document.title = to.matched[0].meta.title  //修改网页标题
   //next必须调用
   next()
 })

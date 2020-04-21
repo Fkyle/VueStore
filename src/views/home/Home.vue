@@ -179,15 +179,15 @@ export default {
       console.log('home destory');
     },
   activated(){
-      console.log('活跃状态');
+      // console.log('活跃状态');
       this.$refs.btscroll.refresh()
       this.$refs.btscroll.BackTop(0,this.saveY,0)
       
     },
   deactivated() {
-      console.log('不活跃状态')
+      // console.log('不活跃状态')
       this.saveY = this.$refs.btscroll.getScrollY()
-      console.log(this.saveY);
+      // console.log(this.saveY);
 
     }
 };

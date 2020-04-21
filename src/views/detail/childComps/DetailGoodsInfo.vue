@@ -7,8 +7,7 @@
     </div>
     <div class="info-key">{{detailInfo.detailImage[0].key}}</div>
     <div class="info-list">
-      <img v-for="(item,index) in detailInfo.detailImage[0].list" 
-            :key="index" :src="item" @load='imgLoad'>
+      <img v-for="(item,index) in detailInfo.detailImage[0].list" :key="index" v-lazy="item" />
     </div>
   </div>
 </template>
@@ -21,25 +20,6 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    },
-    data(){
-      return{
-        counter:0,
-        imgLength:0
-      }
-    },
-    methods: {
-      imgLoad(){
-        // 先++在进行判断，所有图片加载完成后进行自定义函数
-        if(++this.counter === this.imgLength){
-          this.$emit('imageLoad')
-        }
-      }
-    },
-    watch:{
-      detailInfo(){
-        this.imgLength = this.detailInfo.detailImage[0].list.length
       }
     }
   }
@@ -97,51 +77,6 @@ export default {
   font-size: 15px;
 }
 
-.info-list img {
-  width: 100%;
-}
-</style>
-.goods-info {
-  padding: 20px 0;
-  border-bottom: 5px solid #f2f5f8;
-}
-.info-desc {
-  padding: 0 15px;
-}
-.info-desc .strat,
-.info-desc .end {
-  width: 90px;
-  height: 1px;
-  background-color: #a3a3a5;
-  position: relative;
-}
-.info-desc .start {
-  float: left;
-}
-.info-desc .end {
-  float: right;
-}
-.info-desc .start::before,
-.info-desc .end::after {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background-color: #333;
-  bottom: 0;
-}
-.info-desc .end::after {
-  right: 0;
-}
-.info-desc .desc {
-  padding: 15px 0;
-  font-size: 14px;
-}
-.info-key {
-  margin: 10px 0 10px 15px;
-  color: #333;
-  font-size: 15px;
-}
 .info-list img {
   width: 100%;
 }
